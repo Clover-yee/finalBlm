@@ -4,9 +4,11 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
+
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Shop {
+public class Shop implements Serializable {
     int shopId;
     String shopName;
     String shopAddress;

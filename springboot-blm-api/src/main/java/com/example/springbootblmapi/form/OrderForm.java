@@ -5,11 +5,12 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class OrderForm {
+public class OrderForm implements Serializable {
     Integer shopId;
     Integer userId;
     String orderRemark;

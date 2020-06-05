@@ -4,11 +4,12 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class OrderInfAllApp {
+public class OrderInfAllApp implements Serializable {
     String shopName;
     List<OrderInfApp> orderInfApps;
     Double orderMoney;

@@ -5,11 +5,12 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Order {
+public class Order implements Serializable {
     int orderId;
     String shopName;
     @JSONField(format="yyyy-MM-dd HH:mm:ss")

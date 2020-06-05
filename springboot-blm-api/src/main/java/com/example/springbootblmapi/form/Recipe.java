@@ -4,9 +4,11 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
+
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Recipe {
+public class Recipe implements Serializable {
     private Integer recipeId;
     private String recipeName;
     private Double recipePrice;
