@@ -1,12 +1,13 @@
 package com.example.springbootblmapi.util;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  *
  */
-public class AbstractJsonObject {
+public class AbstractJsonObject implements Serializable {
 
 	private int code;
 	// 

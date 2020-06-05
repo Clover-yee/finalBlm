@@ -38,6 +38,7 @@
         <module>springboot-user-provider</module>
         <module>springboot-shop-client</module>
         <module>springboot-shop-provider</module>
+        <module>springboot-blm-api</module>
     </modules>
 
     <dependencies>

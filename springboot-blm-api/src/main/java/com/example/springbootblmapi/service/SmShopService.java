@@ -17,4 +17,7 @@ public interface SmShopService {
     void updateShopInf(ShopForm form);
 
     void updateShopPwd(int shopId, String shopPwd);
+
+    void modifyShopState(int shopId, String state);
+
 }

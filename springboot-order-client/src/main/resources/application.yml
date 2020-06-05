@@ -18,16 +18,15 @@ spring:
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 server:
-  port: 8001
+  port: 8006
 
 dubbo:
   application:
-    name: user-provider
+    name: order-client
   registry:
-    address: zookeeper://ylnzk.cn:2181
+    address: zookeeper://127.0.0.1:2181
   protocol:
     name: dubbo
-    port: 20881
-
-
+    port: 20882

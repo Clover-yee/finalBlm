@@ -53,5 +53,5 @@ public interface OmOrderMapper extends Mapper<OmOrderEntity> {
             @Result(property = "shopName", column = "shop_name"),
             @Result(property = "orderMoney", column = "order_money")
     })
-    OrderInfAllApp getOrderInfByOrderIdApp(int orderId);
+    OrderInfAllApp getOrderByOrderIdApp(int orderId);
 }

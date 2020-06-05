@@ -20,7 +20,7 @@ import java.util.List;
 
 @Service
 @Component
-public class SmShopServiceImpl implements SmShopService {
+    public class SmShopServiceImpl implements SmShopService {
     @Autowired
     private SmShopMapper mapper;
 
@@ -86,6 +86,17 @@ public class SmShopServiceImpl implements SmShopService {
         SmShopEntity entity = new SmShopEntity();
         entity.setShopId(shopId);
         entity.setShopPwd(shopPwd);
+        Example example = new Example(SmShopEntity.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("shopId", entity.getShopId());
+        mapper.updateByExampleSelective(entity, example);
+    }
+
+    @Override
+    public void modifyShopState(int shopId, String state) {
+        SmShopEntity entity = new SmShopEntity();
+        entity.setShopId(shopId);
+        entity.setShopStatus(state);
         Example example = new Example(SmShopEntity.class);
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("shopId", entity.getShopId());
