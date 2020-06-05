@@ -20,6 +20,25 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>springboot-shop-provider</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.22</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
     <build>

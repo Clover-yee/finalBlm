@@ -17,12 +17,11 @@
         <mysql.version>8.0.20</mysql.version>
         <mybatis.version>2.1.2</mybatis.version>
         <tk-mybatis.version>4.1.5</tk-mybatis.version>
-        <dubbo.version>2.5.3</dubbo.version>
+<!--        <dubbo.version>2.5.3</dubbo.version>-->
         <zookeeper.version>3.6.1</zookeeper.version>
         <zkclient.version>0.11</zkclient.version>
         <com.alibaba.druid.version>1.1.22</com.alibaba.druid.version>
-        <netty.version>5.0.0.Alpha2</netty.version>
-        <dubbo-spring-boot-starter.version>2.7.7</dubbo-spring-boot-starter.version>
+        <dubbo-spring-boot-starter.version>2.7.6</dubbo-spring-boot-starter.version>
     </properties>
 
     <parent>
@@ -76,22 +75,28 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper</artifactId>
             <version>${tk-mybatis.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>${dubbo.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba</groupId>-->
+<!--            <artifactId>dubbo</artifactId>-->
+<!--            <version>${dubbo.version}</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.springframework</groupId>-->
+<!--                    <artifactId>spring</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>com.101tec</groupId>
@@ -99,18 +104,16 @@
             <version>${zkclient.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-            <version>${netty.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>${dubbo-spring-boot-starter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.22</version>
         </dependency>
 
     </dependencies>
