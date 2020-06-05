@@ -38,7 +38,6 @@
         <module>springboot-user-provider</module>
         <module>springboot-shop-client</module>
         <module>springboot-shop-provider</module>
-        <module>springboot-dubbo-api</module>
     </modules>
 
     <dependencies>

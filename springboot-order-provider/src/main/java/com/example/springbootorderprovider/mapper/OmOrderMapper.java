@@ -1,10 +1,10 @@
 package com.example.springbootorderprovider.mapper;
 
-import com.example.api.entity.OmOrderEntity;
-import com.example.api.form.Order;
-import com.example.api.form.OrderApp;
-import com.example.api.form.OrderInfAllApp;
-import com.example.api.form.ShopOrder;
+import com.example.springbootblmapi.entity.OmOrderEntity;
+import com.example.springbootblmapi.form.Order;
+import com.example.springbootblmapi.form.OrderApp;
+import com.example.springbootblmapi.form.OrderInfAllApp;
+import com.example.springbootblmapi.form.ShopOrder;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
