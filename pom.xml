@@ -21,6 +21,8 @@
         <zookeeper.version>3.6.1</zookeeper.version>
         <zkclient.version>0.11</zkclient.version>
         <com.alibaba.druid.version>1.1.22</com.alibaba.druid.version>
+        <netty.version>5.0.0.Alpha2</netty.version>
+        <dubbo-spring-boot-starter.version>2.7.7</dubbo-spring-boot-starter.version>
     </properties>
 
     <parent>
@@ -96,6 +98,21 @@
             <artifactId>zkclient</artifactId>
             <version>${zkclient.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter -->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>${dubbo-spring-boot-starter.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>
