@@ -1,0 +1,19 @@
+package com.example.api.form;
+
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
+
+import java.sql.Timestamp;
+
+@Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class OrderApp {
+    Integer orderId;
+    Integer shopId;
+    String shopName;
+    byte[] shopTrademark;
+    Timestamp orderCreateTime;
+    String orderStatus;
+    Double orderMoney;
+}
