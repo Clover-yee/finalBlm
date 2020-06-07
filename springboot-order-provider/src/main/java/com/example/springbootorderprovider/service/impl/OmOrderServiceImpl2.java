@@ -2,10 +2,7 @@ package com.example.springbootorderprovider.service.impl;
 
 import com.example.springbootblmapi.entity.OmOrderEntity;
 import com.example.springbootblmapi.entity.OmOrderInfEntity;
-import com.example.springbootblmapi.form.Order;
-import com.example.springbootblmapi.form.OrderForm;
-import com.example.springbootblmapi.form.OrderInfAllApp;
-import com.example.springbootblmapi.form.ShopOrder;
+import com.example.springbootblmapi.form.*;
 import com.example.springbootblmapi.service.OmOrderServiceTransactional;
 import com.example.springbootblmapi.service.SmRecipeService;
 import com.example.springbootblmapi.service.SmShopService;
@@ -56,17 +53,18 @@ public class OmOrderServiceImpl2 implements OmOrderServiceTransactional {
         omOrderEntity.setOrderCreatetime(new Timestamp(System.currentTimeMillis()));
         orderId=mapper.insert(omOrderEntity);
         for (OmOrderInfEntity omOrderInfEntity : form.getOrderInfList()) {
+            smRecipeService.updateRecipeRemain(omOrderInfEntity.getRecipeId(),omOrderInfEntity.getOrderRecipeNumber());
+        }
+        for (OmOrderInfEntity omOrderInfEntity : form.getOrderInfList()) {
             omOrderInfEntity.setOrderId(orderId);
             omOrderInfMapper.insert(omOrderInfEntity);
         }
-
         return orderId;
     }
 
     @Override
     @Transactional
     public Integer confirmInsert(OrderForm form){
-
         return orderId;
     }
 
@@ -77,6 +75,10 @@ public class OmOrderServiceImpl2 implements OmOrderServiceTransactional {
             OmOrderEntity omOrderEntity = new OmOrderEntity();
             omOrderEntity.setOrderId(orderId);
             mapper.deleteByExample(omOrderEntity);
+
+            OmOrderInfEntity omOrderInfEntity = new OmOrderInfEntity();
+            omOrderInfEntity.setOrderId(orderId);
+            omOrderInfMapper.deleteByExample(omOrderInfEntity);
         }
         return 0;
     }

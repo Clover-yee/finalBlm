@@ -3,17 +3,20 @@ package com.example.springbootshopprovider.service.impl;
 import com.example.springbootblmapi.entity.SmRecipeEntity;
 import com.example.springbootblmapi.form.Recipe;
 import com.example.springbootblmapi.service.SmRecipeService;
+import com.example.springbootblmapi.service.SmRecipeServiceTransactional;
 import com.example.springbootshopprovider.mapper.SmRecipeMapper;
 import org.apache.dubbo.config.annotation.Service;
+import org.mengyun.tcctransaction.api.Compensable;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service(version = "2.0.0")
-public class SmRecipeServiceImpl2 implements SmRecipeService {
+public class SmRecipeServiceImpl2 implements SmRecipeServiceTransactional {
     @Autowired
     private SmRecipeMapper mapper;
 
@@ -56,13 +59,31 @@ public class SmRecipeServiceImpl2 implements SmRecipeService {
     }
 
     @Override
+    @Compensable(confirmMethod = "confirmInsert", cancelMethod = "cancelInsert", asyncConfirm = true)
+    @Transactional
     public void updateRecipeRemain(int recipeId, int recipeNum) {
-
+        Recipe recipe=mapper.findByRecipeId(recipeId).get(0);
+        if(recipe.getRecipeRemain()<recipeNum) throw new RuntimeException("余量不足");
+        mapper.updateRecipeIsFrozen(recipeId,recipeNum);
     }
 
     @Override
-    public void updateRecipeIsFrozen(int recipeId, int recipeNum) {
+    @Transactional
+    public void confirmUpdateRecipeRemain(int recipeId, int recipeNum) {
+        mapper.updateRecipeIsFrozen(recipeId,0);
+        mapper.updateRecipeRemain(recipeId,recipeNum);
+    }
 
+    @Override
+    @Transactional
+    public void cancelUpdateRecipeRemain(int recipeId, int recipeNum) {
+        mapper.updateRecipeIsFrozen(recipeId,0);
+    }
+
+
+    @Override
+    public Recipe findByRecipeId(int recipeId) {
+        return mapper.findByRecipeId(recipeId).get(0);
     }
 
 

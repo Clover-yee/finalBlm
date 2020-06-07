@@ -36,9 +36,20 @@ public interface SmRecipeMapper extends Mapper<SmRecipeEntity> {
     })
     List<RecipeUser> getRecipeByShopIdUser(int shopId);
 
-    @Update("update sm_recipe set recipe_remain=recipe_remain-#{recipeNum} where recipe_id=#{recipeId}")
+    @Update("update sm_recipe set recipe_remain=recipe_remain-#{recipeNum} where recipe_id=#{recipe_id}")
     void  updateRecipeRemain(int recipeId,int recipeNum);
 
-    @Update("update sm_recipe set is_frozen=#{recipeNum} where recipe_id=#{recipeId}")
+    @Update("update sm_recipe set is_frozen=#{recipeNum} where recipe_id=#{recipe_id}")
     void  updateRecipeIsFrozen(int recipeId,int recipeNum);
+
+    @Select("select s.recipe_id,s.recipe_name,s.recipe_price,s.monthly_sale,s.recipe_introduction,s.recipe_remain,s.recipe_discount,s.recipe_status,s.recipe_image from sm_recipe s where s.recipe_id=#{recipe_id}")
+    @Results({
+            @Result(property = "recipeId",column = "recipe_id"),
+            @Result(property = "recipePrice", column = "recipe_price"),
+            @Result(property = "recipeName", column = "recipe_name"),
+            @Result(property = "recipePrice", column = "recipe_price"),
+            @Result(property = "monthlySale", column = "monthly_sale"),
+            @Result(property = "recipeIntroduction", column = "recipe_introduction"),
+            @Result(property = "recipeRemain", column = "recipe_remain")})
+    List<Recipe> findByRecipeId(int recipeId);
 }

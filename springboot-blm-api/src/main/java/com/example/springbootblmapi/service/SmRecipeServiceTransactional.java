@@ -1,11 +1,10 @@
 package com.example.springbootblmapi.service;
 
-
 import com.example.springbootblmapi.form.Recipe;
 
 import java.util.List;
 
-public interface SmRecipeService {
+public interface SmRecipeServiceTransactional {
     List<Recipe> findAllByShopId(int shopId);
 
     void updateRecipe(int recipeId, String recipeName,
@@ -16,7 +15,11 @@ public interface SmRecipeService {
 
     void updateRecipeRemain(int recipeId,int recipeNum);
 
-    void updateRecipeIsFrozen(int recipeId,int recipeNum);
+    void confirmUpdateRecipeRemain(int recipeId,int recipeNum);
+
+    void cancelUpdateRecipeRemain(int recipeId,int recipeNum);
 
     Recipe findByRecipeId(int recipeId);
+
+
 }
