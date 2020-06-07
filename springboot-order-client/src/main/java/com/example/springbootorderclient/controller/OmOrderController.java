@@ -17,9 +17,11 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.beans.BeanUtils;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -28,8 +30,10 @@ import java.util.List;
 @Api("订单接口")
 @Slf4j
 public class OmOrderController {
-    @Reference
+    @Reference(version = "1.0.0", check = false)
     private OmOrderService orderService;
+    @Reference(version = "2.0.0", check = false)
+    private OmOrderService newOrderService;
     @Reference
     private OmOrderInfService orderInfService;
 
@@ -81,8 +85,14 @@ public class OmOrderController {
         }
     }
 
+    @GetMapping("/done")
     public List<OmOrderEntity> getOrderListDone(){
-        return null;
+        List<Order> orders = newOrderService.getOrderList(1);
+        OmOrderEntity entity = new OmOrderEntity();
+        BeanUtils.copyProperties(orders, entity);
+        List<OmOrderEntity> entities = new ArrayList<>();
+        entities.add(entity);
+        return entities;
     }
 
     public List<OmOrderEntity> getOrderListUndo(){
@@ -97,12 +107,12 @@ public class OmOrderController {
             SingleObject res = new SingleObject();
             res.setStatusObject(StatusHouse.COMMON_STATUS_OK);
             int orderId = orderService.insert(form);
-            res.setData(orderId);
-            for (OmOrderInfEntity omOrderInfEntity : form.getOrderInfList()) {
-                omOrderInfEntity.setOrderId(orderId);
-                log.info(omOrderInfEntity.getOrderId() + "");
-                orderInfService.insert(omOrderInfEntity);
-            }
+//            res.setData(orderId);
+//            for (OmOrderInfEntity omOrderInfEntity : form.getOrderInfList()) {
+//                omOrderInfEntity.setOrderId(orderId);
+//                log.info(omOrderInfEntity.getOrderId() + "");
+//                orderInfService.insert(omOrderInfEntity);
+//            }
             res.setData(orderId);
             WebSocketServer.sendMessageToShop(form.getShopId(), JSONObject.toJSONString(form));
             return res;

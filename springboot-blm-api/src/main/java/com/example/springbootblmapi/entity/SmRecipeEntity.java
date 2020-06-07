@@ -17,6 +17,7 @@ public class SmRecipeEntity implements Serializable {
     private Integer recipeRemain;
     private Double recipeDiscount;
     private String recipeStatus;
+    private Integer isForzen;
 
     @Id
     @Column(name = "recipe_id", nullable = false)
@@ -119,6 +120,18 @@ public class SmRecipeEntity implements Serializable {
         this.recipeStatus = recipeStatus;
     }
 
+    @Basic
+    @Column(name = "isForzen", nullable = true)
+    public Integer getIsForzen() {
+        return isForzen;
+    }
+
+    @Basic
+    @Column(name = "isForzen", nullable = true)
+    public void setIsForzen(Integer isForzen) {
+        this.isForzen = isForzen;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -156,4 +169,5 @@ public class SmRecipeEntity implements Serializable {
         result = 31 * result + (recipeStatus != null ? recipeStatus.hashCode() : 0);
         return result;
     }
+
 }

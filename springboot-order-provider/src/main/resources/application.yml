@@ -14,6 +14,7 @@ spring:
       max-wait: 10000
       time-between-eviction-runs-millis: 60000
       min-evictable-idle-time-millis: 30000
+#  dataSource需要单独配置，不能和业务里使用的dataSource复用,即使使用的是同一个数据库。
 
 mybatis:
   configuration:
@@ -22,6 +23,8 @@ mybatis:
 dubbo:
   application:
     name: order-provider
+  provider:
+    proxy: tccJavassist
   registry:
     address: zookeeper://127.0.0.1:2181
   protocol:

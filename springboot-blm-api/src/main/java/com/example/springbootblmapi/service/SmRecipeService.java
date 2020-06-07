@@ -14,5 +14,7 @@ public interface SmRecipeService {
 
     List<Recipe> findTop5ByShopId(int shopId);
 
+    void updateRecipeRemain(int recipeId,int recipeNum);
 
+    void updateRecipeIsFrozen(int recipeId,int recipeNum);
 }

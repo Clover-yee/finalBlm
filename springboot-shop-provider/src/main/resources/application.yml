@@ -1,7 +1,4 @@
 spring:
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://ylnzk.cn:3306/blm?characterEncoding=UTF-8&serverTimezone=GMT%2B8

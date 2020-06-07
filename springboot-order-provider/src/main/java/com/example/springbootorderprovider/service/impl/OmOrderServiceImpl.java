@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import java.sql.Timestamp;
 import java.util.List;
 
-@Service
+@Service(version = "1.0.0")
 @Component
 public class OmOrderServiceImpl implements OmOrderService {
     @Autowired

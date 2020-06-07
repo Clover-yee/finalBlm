@@ -25,7 +25,7 @@ import java.util.List;
 public class OmOrderInfController {
     @Reference
     private OmOrderInfService orderInfService;
-    @Reference
+    @Reference(version = "1.0.0")
     private OmOrderService orderService;
 
     @GetMapping("/getOrderInf")

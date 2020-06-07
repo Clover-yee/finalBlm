@@ -22,6 +22,7 @@
         <zkclient.version>0.11</zkclient.version>
         <com.alibaba.druid.version>1.1.22</com.alibaba.druid.version>
         <dubbo-spring-boot-starter.version>2.7.6</dubbo-spring-boot-starter.version>
+        <tcc-transaction.version>1.2.12</tcc-transaction.version>
     </properties>
 
     <parent>
@@ -63,9 +64,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis.version}</version>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper</artifactId>
+            <version>${tk-mybatis.version}</version>
         </dependency>
 
         <dependency>
@@ -80,12 +81,6 @@
             <version>4.3.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper</artifactId>
-            <version>${tk-mybatis.version}</version>
-        </dependency>
-
 <!--        <dependency>-->
 <!--            <groupId>com.alibaba</groupId>-->
 <!--            <artifactId>dubbo</artifactId>-->
@@ -97,6 +92,17 @@
 <!--                </exclusion>-->
 <!--            </exclusions>-->
 <!--        </dependency>-->
+        <dependency>
+            <groupId>org.mengyun</groupId>
+            <artifactId>tcc-transaction-spring</artifactId>
+            <version>${tcc-transaction.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mengyun</groupId>
+            <artifactId>tcc-transaction-dubbo</artifactId>
+            <version>${tcc-transaction.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.101tec</groupId>
